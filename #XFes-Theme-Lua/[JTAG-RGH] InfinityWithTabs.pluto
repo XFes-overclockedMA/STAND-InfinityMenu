@@ -1,0 +1,318 @@
+------------------------------------------------------------------------------------------------------------------------------
+--                                                                                                                          --
+--Version:                                                                                                                  --
+--0.1                                                                                                                       --
+--Build Date:                                                                                                               --
+--04/16/23                                                                                                                  --
+-----powered By = разогнанный = OverclockedMA                                                                               --
+------------------------------------------------------------------------------------------------------------------------------
+-- Ininity Menu <3                                                                                                          --
+-- Welcome on my CODE                                                                                                       --  
+-- This OPEN SOURCE PROVIDED YOU MENTION ME IN YOUR PROJECTS                                                                --  
+--> Thanks :) <3                                                                                                            --
+------------------------------------------------------------------------------------------------------------------------------
+util.keep_running() 
+util.require_natives("natives-1676318796")
+------------------------------------------------------------------------------------------------------------------------------
+---------------RESOURCES SVT
+local load_path = filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\loading\\infinityload.png'
+if not io.exists(load_path) then
+    util.toast('[Infinity] Infinity #xfes-lib-theme\\infinitymenu\\loading\\infinityload.png not found!')
+   util.stop_script()
+end
+----------------------------------------------------------
+local loadachivement_path = filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\loading\\loadachivement.png'
+if not io.exists(loadachivement_path) then
+    util.toast('[Infinity] Infinity #xfes-lib-theme\\infinitymenu\\loading\\loadachivement.png not found!')
+   util.stop_script()
+end
+--------------------------------------------------------------------
+local header_path = filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\headerb\\h1.png'
+if not io.exists(header_path) then
+    util.toast('[Infinity] Infinity #xfes-lib-theme\\infinitymenu\\headerb\\h1.png not found!')
+    util.stop_script()
+end
+local header = directx.create_texture(header_path)
+-----------------------------------------------------------------
+local headers_path = filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\headerg\\g1.png'
+if not io.exists(headers_path) then
+   util.toast('[Infinity] Infinity #xfes-lib-theme\\infinitymenu\\headerg\\g1.png not found!')
+  util.stop_script()
+end
+local headers = directx.create_texture(headers_path)
+-----------------------------------------------------------------
+local footer_path = filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\footerb.png'
+if not io.exists(footer_path) then
+   util.toast('[Infinity] Infinity #xfes-lib-theme\\infinitymenu\\footerb.png not found!')
+  util.stop_script()
+end
+local footer = directx.create_texture(footer_path)
+-----------------------------------------------------------------
+local footerg_path = filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\footerg.png'
+if not io.exists(footerg_path) then
+   util.toast('[Infinity] Infinity #xfes-lib-theme\\infinitymenu\\footerg.png not found!')
+  util.stop_script()
+end
+local footerg = directx.create_texture(footerg_path)
+-----------------------------------------------------------------
+local function get_headerb_path(b)
+	return filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\headerb\\h' .. b .. '.png'
+end
+-----------------------------------------------------------------
+local function get_headerg_path(g)
+	return filesystem.resources_dir() .. '#xfes-lib-theme\\infinitymenu\\headerg\\g' .. g .. '.png'
+end
+
+-----------------------------------------------------------------------------------------------
+---------------NOTIFY LAUNCH SVT.PLUTO
+util.toast("Hi, " .. players.get_name(players.user()) .. "! \nWelcome To Infinity - Theme")
+-----------------------------------------------------------------------------------------------
+---------------SPLASH SCREEN REPERTORY
+HC_DIR = filesystem.resources_dir() .. "#xfes-lib-theme\\infinitymenu\\"
+infinityloading = {
+    Img = HC_DIR .. "loading\\",
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- LOAD SPLASH IMG
+function SHOW_IMG(img_name, max_passed_time)----------------------------------------------Credit goes to LanceScript Reloaded (THANKS, LanceScript Team :) <3 )
+    if filesystem.exists(infinityloading.Img .. img_name) then
+        local ImgAlpha = 0
+        local IncreasedImgAlpha = 0.01
+        util.create_tick_handler(function()
+            ImgAlpha = ImgAlpha + IncreasedImgAlpha
+            if ImgAlpha > 1 then
+                ImgAlpha = 1
+            elseif ImgAlpha < 0 then 
+                ImgAlpha = 0
+                return false
+            end
+        end)
+
+        local Img = directx.create_texture(infinityloading.Img .. img_name)
+        local StartedTime = os.clock()
+        util.create_tick_handler(function()
+            directx.draw_texture(Img, 0.07, 0.07, 0.5, 0.5, 0.5, 0.5, 0, 1, 1, 1, ImgAlpha)
+            local PassedTime = os.clock() - StartedTime
+            if PassedTime > max_passed_time then
+                IncreasedImgAlpha = -0.01
+            end
+            if ImgAlpha == 0 then
+                return false
+            end
+        end)
+    end
+end
+
+if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then
+    SHOW_IMG("infinityload.png", 3.0)
+    GRAPHICS.ANIMPOSTFX_PLAY("FocusOut", 0, 0)
+end
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- LOAD XBOX AC
+function SHOW_IMG(img_name, max_passed_time)----------------------------------------------Credit goes to LanceScript Reloaded (THANKS, LanceScript Team :) <3 )
+    if filesystem.exists(infinityloading.Img .. img_name) then
+        local ImgAlpha = 0
+        local IncreasedImgAlpha = 0.01
+        util.create_tick_handler(function()
+            ImgAlpha = ImgAlpha + IncreasedImgAlpha
+            if ImgAlpha > 1 then
+                ImgAlpha = 1
+            elseif ImgAlpha < 0 then 
+                ImgAlpha = 0
+                return false
+            end
+        end)
+
+        local Img = directx.create_texture(infinityloading.Img .. img_name)
+        local StartedTime = os.clock()
+        util.create_tick_handler(function()
+            directx.draw_texture(Img, 0.07, 0.05, 1.5, 4.8, 0.5, 0.5, 0, 1, 1, 1, ImgAlpha)
+            local PassedTime = os.clock() - StartedTime
+            if PassedTime > max_passed_time then
+                IncreasedImgAlpha = -0.01
+            end
+            if ImgAlpha == 0 then
+                return false
+            end
+        end)
+    end
+end
+
+if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then
+    SHOW_IMG("loadachivement.png", 3.0)
+    
+end
+-----------------------------------------------------------------------------------------------------------------------------------
+---------------Profile Stand.LUA
+----------------------------------------------COLOURS
+menu.trigger_commands("primary BCBCBCFF")
+menu.trigger_commands("focustext 000000FF")
+menu.trigger_commands("focusrighttext 000000FF")
+menu.trigger_commands("focustexture 000000FF")
+menu.trigger_commands("backgroundopacity 200")
+menu.trigger_commands("background 030403C8")
+----------------------------------------------POSITION
+menu.trigger_commands("menux 1429")
+menu.trigger_commands("menuy 172")
+----------------------------------------------ADRESSE BAR
+menu.trigger_commands("addressbar off")
+menu.trigger_commands("cursorpos on")
+----------------------------------------------TABS
+menu.trigger_commands("tabs on")
+menu.trigger_commands("tabswidth 50")
+menu.trigger_commands("tabsheight 5")
+menu.trigger_commands("tabsposition top")
+menu.trigger_commands("tabstextscale 11")
+menu.trigger_commands("tabstextyoffset 5")
+menu.trigger_commands("tabsalignment centre")
+menu.trigger_commands("tabsname off")
+----------------------------------------------SCROLLBAR 
+----------------------------------------------SCROLLBAR DISABLED MANUALY BEACEAUSE COMMAND NOT FOUND... 
+menu.trigger_commands("scrollbarwidth 10")
+----------------------------------------------APPEARANCE MAIN 
+menu.trigger_commands("menuheight 13")
+menu.trigger_commands("listwidth 350")
+menu.trigger_commands("listheight 36")
+menu.trigger_commands("spacersize 0")
+menu.trigger_commands("smoothscroll 110")
+menu.trigger_commands("blur 1")
+----------------------------------------------NOTIFICATIONS 
+menu.trigger_commands("notifyborder 19C1FFFF")
+menu.trigger_commands("notifyflash 19C1FFFF")
+menu.trigger_commands("notifybg 030403DC")
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- DIVIDER HEADER
+menu.divider(menu.my_root(), ("Infinity - Setting"))
+menu.divider(menu.my_root(), ("---------------Custom - Color---------------"))
+pinf = menu.slider(menu.my_root(), ("Preset Menu"), {"infinitytitle"}, "Customize Font Title", 0, 1, 0, 1, function(); 
+rb = menu.get_value(pinf)
+      if rb  == 1 then 
+      menu.trigger_commands("notifyborder #2BC021")
+     menu.trigger_commands("notifyflash #51FD68")
+     menu.trigger_commands("notifybg 030403DC")
+      else 
+      menu.trigger_commands("notifyborder 19C1FFFF")
+      menu.trigger_commands("notifyflash 19C1FFFF")
+     menu.trigger_commands("notifybg 030403DC")
+      end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- DIVIDER Click UI
+menu.divider(menu.my_root(), ("---------------Stand Setting---------------"))
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- SEARCH MOUSE SETTINGS
+menu.action(menu.my_root(), "Mouse Support ", {}, "Shortcut to the settings for the Mouse Support.", function(on_click)
+    menu.trigger_commands("search Mouse Support")
+ end)
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- SEARCH CURSOR SETTING
+ menu.action(menu.my_root(), "Cursor Bar", {}, "Shortcut to the settings for the overlay.", function(on_click)
+ util.toast("[Infinity] - Stand>Settings>Appearance and colors>Primary.")
+menu.focus(menu.ref_by_path("Stand>Settings>Appearance"), function() end)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- DIVISER FOOTER
+menu.divider(menu.my_root(), ("By XFes-OverclockedMA v1.0"))
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- HEADER BLUE ANIMATED
+local header = directx.create_texture(header_path)
+util.create_tick_handler(function()
+	
+    if not menu.is_open() then
+		return false
+	end
+
+	for b = 1, 45 do
+		
+        util.yield(50)
+		header = directx.create_texture(get_headerb_path(b))
+        
+     util.yield(0)      
+	end
+    util.yield(1000)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- HEADER GREEN ANIMATED
+local headers = directx.create_texture(headers_path)
+util.create_tick_handler(function()
+	
+    if not menu.is_open() then
+		return false
+	end
+
+	for g = 1, 45 do
+		
+        util.yield(50)
+		headers = directx.create_texture(get_headerg_path(g))
+        
+     util.yield(0)      
+	end
+    util.yield(1000)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------
+--------------- DRAW TEXTURE
+while true do
+    if menu.is_open() then
+        x, y, w, h = menu.get_main_view_position_and_size()
+
+
+----------------------------------------------SUPERIOR TITLE VARIABLE
+      rb = menu.get_value(pinf)
+      if rb  == 1 then 
+        directx.draw_texture(headers, 1, (81 / 1080) / 2, 0, 0, x, y - 80 / 1080, 0, 1, 1, 1, 1) 
+        directx.draw_texture(footerg, 1, (29.7 / 1080) / 2, 0, 0, x, y + h - (0.8 / 1080), 0, 1, 1, 1, 1) 
+      else 
+       directx.draw_texture(header, 1, (81 / 1080) / 2, 0, 0, x, y - 80 / 1080, 0, 1, 1, 1, 1)
+       directx.draw_texture(footer, 1, (29.7 / 1080) / 2, 0, 0, x, y + h - (0.8 / 1080), 0, 1, 1, 1, 1) 
+      end
+----------------------------------------------CURSOR LIST
+directx.draw_text(
+x + (187/ 1080),-- x
+y - (20 / 1080),-- y
+menu.get_active_list_cursor_text(),-- text
+ALIGN_CENTRE ,-- alignment
+0.7,-- scale		
+{-- colour
+["r"] = 1.0,
+["g"] = 1.0,
+["b"] = 1.0,
+["a"] = 1.0
+},
+false		
+)  
+----------------------------------------------ITEM
+directx.draw_text(
+x + (169 / 1080),-- x
+y - (20 / 1080),-- y
+"Item:",-- text
+ALIGN_CENTRE ,-- alignment
+0.7,-- scale					
+{-- colour
+["r"] = 1.0,
+["g"] = 1.0,
+["b"] = 1.0,
+["a"] = 1.0
+},
+false		
+)  
+----------------------------------------------MAIN MENU 
+directx.draw_text(
+x + (93 / 1080),-- x
+y - (20 / 1080),-- y
+"Main menu",-- text
+ALIGN_CENTRE ,-- alignment
+0.7,-- scale					
+{-- colour
+["r"] = 1.0,
+["g"] = 1.0,
+["b"] = 1.0,
+["a"] = 1.0
+},
+false		
+)  
+end
+util.yield()
+end
+
+
+
